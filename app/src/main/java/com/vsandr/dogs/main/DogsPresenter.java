@@ -3,6 +3,7 @@ package com.vsandr.dogs.main;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.util.DisplayMetrics;
 import android.util.Log;
 
 import com.google.gson.Gson;
@@ -42,6 +43,13 @@ public class DogsPresenter implements DogsContract.Presenter {
         view.showDogs(baseWatch.getDogs());
     }
 
+    @Override
+    public void countColumns() {
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        float dpWidth = displayMetrics.widthPixels / displayMetrics.density;
+        view.columnNumber((int) (dpWidth / 180));
+    }
+
     /* Get File in Assets Folder */
     private String getAssetsJSON(String fileName) {
         String json = null;
@@ -57,6 +65,5 @@ public class DogsPresenter implements DogsContract.Presenter {
         }
         return json;
     }
-
 
 }

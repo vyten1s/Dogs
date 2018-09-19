@@ -20,8 +20,6 @@ import butterknife.ButterKnife;
 
 public class DogsAdapter extends RecyclerView.Adapter<DogsAdapter.ViewHolder> {
 
-    public static final String DOG_POSITION = "position";
-
     private List mDogs;
     private Context mContext;
 

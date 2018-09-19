@@ -10,6 +10,8 @@ public class DogsContract {
         void showDogs(List<Dogs> dogs);
 
         void connectivityStatus(boolean isActive);
+
+        void columnNumber(int number);
     }
 
     interface Presenter{
@@ -17,5 +19,7 @@ public class DogsContract {
         void checkInternetConnection();
 
         void getDogsData();
+
+        void countColumns();
     }
 }

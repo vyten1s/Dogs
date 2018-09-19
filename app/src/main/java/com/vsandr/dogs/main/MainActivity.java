@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.DisplayMetrics;
 import android.widget.Toast;
 
 import com.vsandr.dogs.R;
@@ -26,8 +25,11 @@ public class MainActivity extends AppCompatActivity implements DogsContract.View
 
     private DogsAdapter mAdapter;
 
+    private int mColumnNumber;
+
     @BindView(R.id.recycler_view)
     RecyclerView mRecyclerView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +50,11 @@ public class MainActivity extends AppCompatActivity implements DogsContract.View
         mRecyclerView.setHasFixedSize(true);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(layoutManager);
-        mRecyclerView.setLayoutManager(new GridLayoutManager(MainActivity.this, calculateNoOfColumns()));
+
+        presenter.countColumns();
+
+        mRecyclerView.setLayoutManager(new GridLayoutManager(MainActivity.this,
+                mColumnNumber));
         mAdapter = new DogsAdapter(MainActivity.this, dogs);
         mRecyclerView.scrollToPosition(dogs.size());
         mRecyclerView.setAdapter(mAdapter);
@@ -63,10 +69,9 @@ public class MainActivity extends AppCompatActivity implements DogsContract.View
         }
     }
 
-    private int calculateNoOfColumns() {
-        DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
-        float dpWidth = displayMetrics.widthPixels / displayMetrics.density;
-        return (int) (dpWidth / 180);
+    @Override
+    public void columnNumber(int number) {
+        mColumnNumber = number;
     }
 
 }
