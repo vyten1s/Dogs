@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Dogs</string>
+    <string name="error_internet_connection">Check Internet Connection</string>
+    <string name="desc_dog">Dog picture</string>
 </resources>
