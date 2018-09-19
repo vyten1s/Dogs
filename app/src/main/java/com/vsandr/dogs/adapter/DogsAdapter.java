@@ -27,7 +27,6 @@ public class DogsAdapter extends RecyclerView.Adapter<DogsAdapter.ViewHolder> {
 
     public static final String DOG_POSITION = "position";
 
-
     public DogsAdapter(Context mContext, List mDogs) {
         this.mContext = mContext;
         this.mDogs = mDogs;

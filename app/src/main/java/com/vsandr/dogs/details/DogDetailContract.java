@@ -13,4 +13,5 @@ public interface DogDetailContract {
 
         void loadDogImage(String url);
     }
+
 }

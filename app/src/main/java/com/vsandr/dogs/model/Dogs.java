@@ -19,4 +19,5 @@ public class Dogs {
     public void setDogs(List dogs) {
         this.dogs = dogs;
     }
+
 }
