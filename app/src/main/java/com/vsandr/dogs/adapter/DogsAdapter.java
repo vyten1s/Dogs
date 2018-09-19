@@ -1,6 +1,7 @@
 package com.vsandr.dogs.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.vsandr.dogs.R;
+import com.vsandr.dogs.details.DogDetails;
 
 import java.util.List;
 
@@ -22,6 +24,9 @@ public class DogsAdapter extends RecyclerView.Adapter<DogsAdapter.ViewHolder> {
 
     private List mDogs;
     private Context mContext;
+
+    public static final String DOG_POSITION = "position";
+
 
     public DogsAdapter(Context mContext, List mDogs) {
         this.mContext = mContext;
@@ -52,10 +57,9 @@ public class DogsAdapter extends RecyclerView.Adapter<DogsAdapter.ViewHolder> {
         viewHolder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent intent = new Intent(mContext, DogDetail.class);
-                //intent.putExtra(DOG_POSITION, mDogs.get(position).toString());
-              //  mContext.startActivity(intent);
-                // Toast.makeText(mContext, "Senas activity, pozicija yra: " + position, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(mContext, DogDetails.class);
+                intent.putExtra(DOG_POSITION, mDogs.get(position).toString());
+                mContext.startActivity(intent);
             }
         });
     }
