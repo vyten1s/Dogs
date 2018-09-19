@@ -20,4 +20,5 @@ public class DogDetailPresenter implements DogDetailContract.Presenter {
             view.showDogs(url);
         }
     }
+
 }
